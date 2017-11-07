@@ -25,7 +25,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #########################################################
 ### your code goes here ###
 from sklearn.svm import SVC
-clf = SVC(kernel="rbf", c=10.0)
+clf = SVC(kernel="rbf", C=10000.0)
 
 # Reduce training data size by 100
 features_train = features_train[:len(features_train)/100]
