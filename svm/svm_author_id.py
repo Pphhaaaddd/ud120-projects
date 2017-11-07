@@ -28,8 +28,8 @@ from sklearn.svm import SVC
 clf = SVC(kernel="rbf", C=10000.0)
 
 # # Reduce training data size by 100
-# features_train = features_train[:len(features_train)/100]
-# labels_train = labels_train[:len(labels_train)/100]
+features_train = features_train[:len(features_train)/100]
+labels_train = labels_train[:len(labels_train)/100]
 
 
 t0 = time()
@@ -41,8 +41,14 @@ t0 = time()
 pred = clf.predict(features_test)
 print "Prediction time: ", round(time() - t0,3) , "s"
 
+
 accuracy = clf.score(features_test,labels_test)
 
 print("Accuracy: ", accuracy)
+
+# printing specific predictions
+print "Prediction at 10: " , pred[10]
+print "Prediction at 26: " , pred[26]
+print "Prediction at 50: " , pred[50]
 
 #########################################################
