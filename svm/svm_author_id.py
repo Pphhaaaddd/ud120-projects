@@ -28,8 +28,8 @@ from sklearn.svm import SVC
 clf = SVC(kernel="rbf", C=10000.0)
 
 # # Reduce training data size by 100
-features_train = features_train[:len(features_train)/100]
-labels_train = labels_train[:len(labels_train)/100]
+# features_train = features_train[:len(features_train)/100]
+# labels_train = labels_train[:len(labels_train)/100]
 
 
 t0 = time()
@@ -46,9 +46,10 @@ accuracy = clf.score(features_test,labels_test)
 
 print("Accuracy: ", accuracy)
 
-# printing specific predictions
-print "Prediction at 10: " , pred[10]
-print "Prediction at 26: " , pred[26]
-print "Prediction at 50: " , pred[50]
-
+# checking if prediction is 1 (Chris)
+count = 0
+for i in range(0, len(pred)):
+    if pred[i] == 1:
+        count += 1
+print "Number of emails from chris: ", count
 #########################################################
