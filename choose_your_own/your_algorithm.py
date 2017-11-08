@@ -27,16 +27,24 @@ plt.ylabel("grade")
 plt.show()
 ################################################################################
 
-
-### your code here!  name your classifier object clf if you want the 
+### your code here!  name your classifier object clf if you want the
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn import tree
+from sklearn.ensemble import RandomForestRegressor
+
+#clf = GaussianNB()
+#clf = SVC(kernel='rbf', gamma = 50)
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
+clf = RandomForestRegressor(n_estimators=100, max_features="log2", min_samples_split=40, max_depth=5)
 
 
+clf = clf.fit(features_train,labels_train)
 
-
-
-
+accuracy = clf.score(features_test,labels_test)
+print "Accuracy: ", accuracy
 
 try:
     prettyPicture(clf, features_test, labels_test)
