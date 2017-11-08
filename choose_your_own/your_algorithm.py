@@ -34,13 +34,15 @@ from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn import tree
 from sklearn.ensemble import RandomForestRegressor
-from sklearn import neighbors, datasets
+from sklearn import neighbors
+from sklearn.ensemble import AdaBoostClassifier
 
 #clf = GaussianNB()
 #clf = SVC(kernel='rbf', gamma = 50)
 #clf = tree.DecisionTreeClassifier(min_samples_split=40)
 #clf = RandomForestRegressor(n_estimators=1)
-clf = neighbors.KNeighborsClassifier(n_neighbors=8)
+#clf = neighbors.KNeighborsClassifier(n_neighbors=8)
+clf = AdaBoostClassifier(n_estimators=30)
 
 clf = clf.fit(features_train,labels_train)
 
