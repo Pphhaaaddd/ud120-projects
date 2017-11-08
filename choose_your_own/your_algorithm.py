@@ -34,17 +34,24 @@ from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn import tree
 from sklearn.ensemble import RandomForestRegressor
+from sklearn import neighbors, datasets
 
 #clf = GaussianNB()
 #clf = SVC(kernel='rbf', gamma = 50)
-clf = tree.DecisionTreeClassifier(min_samples_split=40)
-clf = RandomForestRegressor(n_estimators=100, max_features="log2", min_samples_split=40, max_depth=5)
-
+#clf = tree.DecisionTreeClassifier(min_samples_split=40)
+#clf = RandomForestRegressor(n_estimators=1)
+clf = neighbors.KNeighborsClassifier(n_neighbors=8)
 
 clf = clf.fit(features_train,labels_train)
 
-accuracy = clf.score(features_test,labels_test)
-print "Accuracy: ", accuracy
+count = 0.0
+pred = clf.predict(features_test)
+for i in range(0,len(pred)):
+    if pred[i]==labels_test[i]:
+        count += 1
+        accuracy = count/len(pred)
+#accuracy = clf.score(features_test,labels_test)
+print "Accuracy : ", accuracy
 
 try:
     prettyPicture(clf, features_test, labels_test)
