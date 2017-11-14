@@ -31,4 +31,10 @@ for data in enron_data:
 
 print "Number of POIs: " , count
 
-print enron_data["PRENTICE JAMES"]["total_stock_value"]
+print "Stock value of James Prentice: " , enron_data["PRENTICE JAMES"]["total_stock_value"]
+
+print "Wesley Colwell to POIs: " , enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
+
+print "Money earned by Jeffrey K Stilling: " , enron_data["SKILLING JEFFREY K"]["long_term_incentive"]
+print "Money earned by Andrew Fastow: " , enron_data["FASTOW ANDREW S"]["long_term_incentive"]
+print "Money earned by Kenneth Lay: " , enron_data["LAY KENNETH L"]["long_term_incentive"]
