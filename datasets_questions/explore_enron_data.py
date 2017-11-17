@@ -19,7 +19,7 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-print "Number of people: " , len(enron_data)
+# print "Number of people: " , len(enron_data)
 #
 # print "Number of features per person: " , len(enron_data["SKILLING JEFFREY K"])
 #
@@ -39,8 +39,17 @@ print "Number of people: " , len(enron_data)
 # print "Money earned by Andrew Fastow: " , enron_data["FASTOW ANDREW S"]["long_term_incentive"]
 # print "Money earned by Kenneth Lay: " , enron_data["LAY KENNETH L"]["long_term_incentive"]
 
-count = 0
+total_count = 0
+total_poi_count = 0
+NaN_poi_count = 0
 for data in enron_data:
-    if (enron_data[data]["total_payments"] == 'NaN'):
-        count += 1
-print "Percentage of People with 'NaN' as total payments: " , 100.0 * count / len(enron_data)
+    total_count += 1
+    if (enron_data[data]["poi"] == 1):
+        total_poi_count += 1
+        if (enron_data[data]["total_payments"] == 'NaN'):
+            NaN_poi_count += 1
+print "Total number of people: " , total_count
+print "POI count: " , total_poi_count
+print "POI with NaN total_payments: " , NaN_poi_count
+
+print "Percentage of POIs with 'NaN' as total payments: " , 100.0 * NaN_poi_count / total_poi_count
