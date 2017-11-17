@@ -20,21 +20,27 @@ import pickle
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 print "Number of people: " , len(enron_data)
+#
+# print "Number of features per person: " , len(enron_data["SKILLING JEFFREY K"])
+#
+# #print enron_data["SKILLING JEFFREY K"]
+# count = 0
+# for data in enron_data:
+#     if (enron_data[data]["poi"]==1):
+#         count += 1
+#
+# print "Number of POIs: " , count
+#
+# print "Stock value of James Prentice: " , enron_data["PRENTICE JAMES"]["total_stock_value"]
+#
+# print "Wesley Colwell to POIs: " , enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
+#
+# print "Money earned by Jeffrey K Stilling: " , enron_data["SKILLING JEFFREY K"]["long_term_incentive"]
+# print "Money earned by Andrew Fastow: " , enron_data["FASTOW ANDREW S"]["long_term_incentive"]
+# print "Money earned by Kenneth Lay: " , enron_data["LAY KENNETH L"]["long_term_incentive"]
 
-print "Number of features per person: " , len(enron_data["SKILLING JEFFREY K"])
-
-#print enron_data["SKILLING JEFFREY K"]
 count = 0
 for data in enron_data:
-    if (enron_data[data]["poi"]==1):
+    if (enron_data[data]["total_payments"] == 'NaN'):
         count += 1
-
-print "Number of POIs: " , count
-
-print "Stock value of James Prentice: " , enron_data["PRENTICE JAMES"]["total_stock_value"]
-
-print "Wesley Colwell to POIs: " , enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
-
-print "Money earned by Jeffrey K Stilling: " , enron_data["SKILLING JEFFREY K"]["long_term_incentive"]
-print "Money earned by Andrew Fastow: " , enron_data["FASTOW ANDREW S"]["long_term_incentive"]
-print "Money earned by Kenneth Lay: " , enron_data["LAY KENNETH L"]["long_term_incentive"]
+print "Percentage of People with 'NaN' as total payments: " , 100.0 * count / len(enron_data)
