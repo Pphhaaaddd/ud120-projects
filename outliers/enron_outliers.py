@@ -27,11 +27,11 @@ matplotlib.pyplot.show()
 i = -1
 for point in data_dict:
     i += 1
-    if( data_dict[data_dict.keys()[i]]["salary"] != "NaN" and data_dict[data_dict.keys()[i]]["salary"] > 10000000 ):
+    if( data_dict[data_dict.keys()[i]]["salary"] != "NaN" and data_dict[data_dict.keys()[i]]["salary"] > 1000000 and data_dict[data_dict.keys()[i]]["bonus"] > 5000000):
         print i , point, data_dict[data_dict.keys()[i]]["salary"]
 
 
-## print data_dict[data_dict.keys()[66]]
+# print data_dict[data_dict.keys()[66]]
 # print data_dict[data_dict.keys()[67]]
 # print data_dict[data_dict.keys()[68]]
 # print data_dict[data_dict.keys()[69]]
