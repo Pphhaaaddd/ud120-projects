@@ -2,6 +2,7 @@
 
 from nltk.stem.snowball import SnowballStemmer
 import string
+import re
 
 def parseOutText(f):
     """ given an opened email file f, parse out all text below the
@@ -36,11 +37,13 @@ def parseOutText(f):
         stemmer = SnowballStemmer("english")
 
         #sliptting words
+        text_string = text_string.replace('\r', ' ')
+        text_string = text_string.replace('\n', ' ')
+        re.sub(' +',' ',text_string)
         split_words = text_string.split(' ')
-        print split_words
         stemmed_words = []
         for word in split_words:
-            if(word != ''):
+            if(word!=''):
                 stemmed_words.append( stemmer.stem(word) )
 
         joined_words = ' '.join([str(x) for x in stemmed_words])
