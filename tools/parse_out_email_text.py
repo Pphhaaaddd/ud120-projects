@@ -33,33 +33,29 @@ def parseOutText(f):
 
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
-        ### space between each stemmed word)
+        ## space between each stemmed word)
         stemmer = SnowballStemmer("english")
 
-        #sliptting words
-        text_string = text_string.replace('\r', ' ')
-        text_string = text_string.replace('\n', ' ')
+        # #sliptting words
+        text_string = text_string.replace('\r', ' ').replace('\n', ' ').replace('\t', ' ')
         re.sub(' +',' ',text_string)
-        split_words = text_string.split(' ')
-        stemmed_words = []
+        text_string = text_string.strip()
+        split_words = text_string.split(" ")
+        words = ""
         for word in split_words:
             if(word!=''):
-                stemmed_words.append( stemmer.stem(word) )
+                words += " " + stemmer.stem(word)
 
-        joined_words = ' '.join([str(x) for x in stemmed_words])
+        #joined_words = ' '.join([str(x) for x in stemmed_words])
 
-        words = joined_words
+        # words = ' '.join([stemmer.stem(word) for word in text_string.split()])
 
     return words
-
-
 
 def main():
     ff = open("../text_learning/test_email.txt", "r")
     text = parseOutText(ff)
     print text
-
-
 
 if __name__ == '__main__':
     main()
