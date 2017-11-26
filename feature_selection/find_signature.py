@@ -42,4 +42,15 @@ from sklearn import tree
 
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(features_train, labels_train)
-print clf.score(features_test, labels_test)
+print "Accuracy: " , clf.score(features_test, labels_test)
+
+max_value = [0,0]
+count = 0
+for a in clf.feature_importances_:
+    if (a>max_value[0]):
+        max_value[0] = a
+        max_value[1] = count
+    count += 1
+
+print "Importance of most important feature: ", max_value[0]
+print "Number of this feature: ", max_value[1]
