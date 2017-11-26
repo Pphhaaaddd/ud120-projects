@@ -44,15 +44,18 @@ clf = tree.DecisionTreeClassifier()
 clf = clf.fit(features_train, labels_train)
 print "Accuracy: " , clf.score(features_test, labels_test)
 
-max_value = [0,0]
+max_value = [0.2,0]
 count = 0
+print "Words with important > 0.2 : "
 for a in clf.feature_importances_:
-    if (a>max_value[0]):
-        max_value[0] = a
-        max_value[1] = count
+    if (a>0.2):
+        #max_value[0] = a
+        #max_value[1] = count
+        print "Importance: ", a
+        print "The word: ", vectorizer.get_feature_names()[count]
     count += 1
 
-print "Importance of most important feature: ", max_value[0]
-print "Number of this feature: ", max_value[1]
+#print "Importance of most important feature: ", max_value[0]
+#print "Number of this feature: ", max_value[1]
 
-print "Most important word: " , vectorizer.get_feature_names()[max_value[1]]
+#print "Most important word: " , vectorizer.get_feature_names()[max_value[1]]
