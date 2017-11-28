@@ -66,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 ###############################################################################
 # Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled
 # dataset): unsupervised feature extraction / dimensionality reduction
-n_components = 10
+n_components = 115
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
@@ -136,14 +136,20 @@ def title(y_pred, y_test, target_names, i):
 prediction_titles = [title(y_pred, y_test, target_names, i)
                          for i in range(y_pred.shape[0])]
 
-#plot_gallery(X_test, prediction_titles, h, w)
+plot_gallery(X_test, prediction_titles, h, w)
 
 # plot the gallery of the most significative eigenfaces
 
 eigenface_titles = ["eigenface %d" % i for i in range(eigenfaces.shape[0])]
 plot_gallery(eigenfaces, eigenface_titles, h, w)
 
-#pl.show()
+pl.show()
 
 ## Variances
-print "1st and 2nd Variances: " , pca.explained_variance_ratio_[0], pca.explained_variance_ratio_[1]
+#print "1st and 2nd Variances: " , pca.explained_variance_ratio_[0], pca.explained_variance_ratio_[1]
+
+# print "Variances: "
+# i=0
+# for a in pca.explained_variance_ratio_:
+#     print i , a
+#     i += 1
