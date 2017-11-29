@@ -68,3 +68,6 @@ print "Number of True Positives: ", tp
 print "Number of False Positive: ", fp
 print "Number of False Negetive: ", fn
 print "Number of True Negetive: ", tn
+
+from sklearn.metrics import precision_score
+print "Precision score: " , precision_score(labels_test,pred)
