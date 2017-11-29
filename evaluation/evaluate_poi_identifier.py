@@ -69,5 +69,10 @@ print "Number of False Positive: ", fp
 print "Number of False Negetive: ", fn
 print "Number of True Negetive: ", tn
 
+#Get precision
 from sklearn.metrics import precision_score
 print "Precision score: " , precision_score(labels_test,pred)
+
+#Get recall
+from sklearn.metrics import recall_score
+print "Recall score: " , recall_score(labels_test,pred)
