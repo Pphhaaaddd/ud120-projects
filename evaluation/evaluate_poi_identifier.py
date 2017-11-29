@@ -39,4 +39,32 @@ clf = clf.fit(features_train,labels_train)
 print "Accuracy: " , clf.score(features_test,labels_test)
 
 #get number of POIs in test set
-print  "Number of POIS: " , labels_test.count(1.0)
+print  "Number of POIs in test set: " , labels_test.count(1.0)
+
+#get total number of people
+print "Total number of people in test set: " , len(labels_test)
+
+#print both true and prediction
+print labels_test
+pred = clf.predict(features_test)
+print pred
+
+i=0
+tp =0
+fp =0
+fn =0
+tn =0
+for a in labels_test:
+    if(pred[i] == a and a == 1.):
+        tp += 1
+    elif(pred[i] == a and a == 0.):
+        tn += 1
+    elif(a == 0. and pred[i] == 1.):
+        fp += 1
+    else:
+        fn += 1
+    i += 1
+print "Number of True Positives: ", tp
+print "Number of False Positive: ", fp
+print "Number of False Negetive: ", fn
+print "Number of True Negetive: ", tn
