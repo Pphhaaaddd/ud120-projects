@@ -427,36 +427,31 @@ labels, features = targetFeatureSplit(data)
 
 
 ####### UNCOMMENT THIS LINE TO RUN FULL CODE ####### Takes a long time to run if pca_pipeline is True.
-# ordered_list, summary_list = evaluation_loop(features, labels, pca_pipeline = True, num_iters=10, test_size=0.3)
-#
-# print ordered_list
-# print "*"*100
-# print summary_list
-# print "*"*100
-#
-# clf = ordered_list[0]
-# scores = summary_list[clf]
-# print "Best classifier is ", clf
-# print "With scores of f1, recall, precision: ", scores
+ordered_list, summary_list = evaluation_loop(features, labels, pca_pipeline = True, num_iters=10, test_size=0.3)
+
+print ordered_list
+print "*"*100
+print summary_list
+print "*"*100
+
+clf = ordered_list[0]
+scores = summary_list[clf]
+print "Best classifier is ", clf
+print "With scores of f1, recall, precision: ", scores
 
 
 # Manually pick classifiers
-clf_logistic = LogisticRegression(  C=10**20,
-                                    penalty='l2',
-                                    random_state=42,
-                                    tol=10**-10,
-                                    #class_weight='balanced'
-                                    )
-clf_lda = LinearDiscriminantAnalysis(n_components=2)
-
-pca = PCA(n_components=20)
-
-clf = Pipeline(steps=[("pca", pca), ("logistic", clf_logistic)])
+# clf_logistic = LogisticRegression(  C=10**20,
+#                                     penalty='l2',
+#                                     random_state=42,
+#                                     tol=10**-10,
+#                                     #class_weight='balanced'
+#                                     )
+# clf_lda = LinearDiscriminantAnalysis(n_components=2)
+#
+# pca = PCA(n_components=20)
+#
+# clf = Pipeline(steps=[("pca", pca), ("logistic", clf_logistic)])
 
 
 test_classifier(clf, my_dataset, features_list)
-
-### Dump your classifier, dataset, and features_list so
-### anyone can run/check your results.
-
-#dump_classifier_and_data(clf, my_dataset, features_list)
